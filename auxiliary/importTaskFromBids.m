@@ -71,14 +71,10 @@ function task = importTaskFromBids(path, selection)
            switch(args.tracksys)
                case 'omc'
                    file_omc = scans{i_sc, 1};
-                   ts = scans{i_sc, 2};
-                   dt_omc = ts;
-                   % dt_omc = datetime(ts([1 : 10, 12 : end]), 'InputFormat', 'y-MM-ddHH:mm:ss.SSS');
+                   dt_omc = scans{i_sc, 2};
                case 'magn'
                    file_magn = scans{i_sc, 1};
-                   ts = scans{i_sc, 2};
-                   dt_magn = ts;
-                   % dt_magn = datetime(ts([1 : 10, 12 : end]), 'InputFormat', 'y-MM-ddHH:mm:ss.SSS');
+                   dt_magn = scans{i_sc, 2};
            end
        end
     end

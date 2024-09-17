@@ -97,7 +97,7 @@ if ~isstruct(calib)
     return
 end
 
-% Load data and compute mean absolute error (mae) for each ----------------
+% Load data and compute mean absolute error (MAE) for each ----------------
 % Allocate empty vectors for mae results (raw and calibrated)
 maes_raw = [];
 maes_cal = [];
@@ -128,6 +128,13 @@ end
 prec = num2str(1);
 
 % Print results
+disp('Validation results ----------------------------')
+if clinical
+    disp('Clinical validation data')
+else
+    disp('Technical validation data')
+end
+
 fprintf(['Raw:    Mean MAE: %.' prec 'f cm, Max. MAE %.' prec 'f cm\n'],...
     100*mean(maes_raw), 100*max(maes_raw));
 fprintf(['Cal-%s: Mean MAE: %.' prec 'f cm, Max. MAE %.' prec 'f cm\n'],...
