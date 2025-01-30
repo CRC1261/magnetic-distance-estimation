@@ -43,7 +43,7 @@ function task = deriveDistances(task, calib)
             for i_a_ch = 1 : 3
                 i_s_ch = 3*(i_a_ch - 1) + (1 : 3);
                 b(i_s_ch, :) = task.magn.raw.set(i_s, i_a).b(i_s_ch, :) ./ ...
-                (task.magn.raw.set(i_s, i_a).m(i_a_ch) / pi * mu_0 * sqrt(3/2) * 1/2);
+                (task.magn.raw.set(i_s, i_a).m(i_a_ch, :) / pi * mu_0 * sqrt(3/2) * 1/2);
             end
 
             % Compute distance using 1 over Frobenius norm
@@ -74,7 +74,7 @@ function task = deriveDistances(task, calib)
                 for i_a_ch = 1 : 3
                     i_s_ch = 3*(i_a_ch - 1) + (1 : 3);
                     b(i_s_ch, :) = task.magn.raw.set(i_s, i_a).b(i_s_ch, :) ./ ...
-                    (task.magn.raw.set(i_s, i_a).m(i_a_ch) / pi * mu_0 * sqrt(3/2) * 1/2);
+                    (task.magn.raw.set(i_s, i_a).m(i_a_ch, :) / pi * mu_0 * sqrt(3/2) * 1/2);
                 end
 
                 % Load matching calibration for sensor-actuator pair
