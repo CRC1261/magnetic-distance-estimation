@@ -11,20 +11,26 @@ function task = deriveDistances(task, calib)
 
             % Also save uninterpolated distance signal (might be useful)
             task.omc.rel.set(i_s, i_a).d = d_rel;
-
-            % Spline interpolation to match sample rates (exclude NaNs)
-            i_nan = isnan(d_rel);
-            d = spline(task.omc.raw.t(~i_nan) + task.omc.raw.T_d,...
-                d_rel(~i_nan), task.magn.raw.t);
-
-            % Propagation of NaN values
-            d_nan = interp1(task.omc.raw.t + task.omc.raw.T_d,...
-                double(~i_nan), task.magn.raw.t, 'nearest');
-            d_nan = floor(movmean(d_nan, 0.1*ceil(task.magn.raw.f_s)));
-            d_nan(d_nan < 1) = nan;
-
-            % Save in new result structure
-            task.omc.dist.set(i_s, i_a).d = d .* d_nan;
+            
+            % Interpolation not necessary for new datasets (same timestamp)
+            if task.omc.raw.T_d == 0
+                 % Save in new result structure
+                 task.omc.dist.set(i_s, i_a).d = d_rel;
+            else
+                % Spline interpolation to match sample rates (exclude NaNs)
+                i_nan = isnan(d_rel);
+                d = spline(task.omc.raw.t(~i_nan) + task.omc.raw.T_d,...
+                    d_rel(~i_nan), task.magn.raw.t);
+    
+                % Propagation of NaN values
+                d_nan = interp1(task.omc.raw.t + task.omc.raw.T_d,...
+                    double(~i_nan), task.magn.raw.t, 'nearest');
+                d_nan = floor(movmean(d_nan, 0.1*ceil(task.magn.raw.f_s)));
+                d_nan(d_nan < 1) = nan;
+    
+                % Save in new result structure
+                task.omc.dist.set(i_s, i_a).d = d .* d_nan;
+            end
         end
     end
 
