@@ -7,6 +7,13 @@ function task = importTaskFromBids(path, selection)
         path = [path '/'];
     end
 
+    if ~isfolder(path)
+        fprintf('Selected result directory ''%s'' does not exist.\n', path)
+        task = false;
+        return;
+    end
+
+
     % Number of tracksystems in this dataset is fixed
     p.tracksystems = {'omc', 'magn'};
 
@@ -14,7 +21,13 @@ function task = importTaskFromBids(path, selection)
     task = struct();
 
     % Check participants list ---------------------------------------------
-    participants = readcell([path 'participants.tsv'], 'FileType', 'text', 'Delimiter', '\t');
+    path_part = [path 'participants.tsv'];
+    if ~exist(path_part, 'file')
+        fprintf('File ''%s'' does not exist. Wrong data path?\n', path_part)
+        task = false;
+        return;
+    end
+    participants = readcell(path_part, 'FileType', 'text', 'Delimiter', '\t');
     for i_p = 2 : length(participants)
         if strcmp(participants{i_p, 1}, ['sub-' selection{1}]) 
             task.data_type = participants{i_p, 2};

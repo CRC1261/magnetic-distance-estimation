@@ -8,13 +8,16 @@ close all
 clc
 
 addpath('auxiliary')
+% -------------------------------------------------------------------------
+% This script is meant to be used only with the distance estimation data set
+% -------------------------------------------------------------------------
 
 % User select -------------------------------------------------------------
 % Check the docu subfolder to get more info on the available datasets 
 % and how to load them
 
 % Select local path of the dataset
-path = 'C:/motion_distest_bids/data';
+path = 'C:/data/';
 
 % Use clinical (true) or technical (false) validation data
 clinical = false;
@@ -45,7 +48,7 @@ end
 % cal-03 (Technical and clinical training data)
 
 % Select calibration to load
-calib_select = '03';
+calib_select = '04';
 
 
 calib = importCalibFromBids(path, calib_select);

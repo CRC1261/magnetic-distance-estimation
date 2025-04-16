@@ -14,13 +14,13 @@ addpath('auxiliary')
 % and how to load them
 
 % Select local path of the dataset
-path = 'C:/motion_distest_bids/data';
+path = 'C:/data/';
 
 % Select subfolder (e.g., sub-11) and task (e.g., task-walk05ms) to load
-data_select = {'11', 'walk05ms'};
+data_select = {'01', 'walk05ms'};
 
 % Select calibration to load (e.g., cal-01)
-calib_select = '01';
+calib_select = '04';
 
 % Load --------------------------------------------------------------------
 task = importTaskFromBids(path, data_select);
