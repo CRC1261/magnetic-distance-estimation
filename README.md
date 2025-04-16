@@ -8,12 +8,12 @@ First download the dataset from Zenodo and set the 'path' variable to the locati
 
 The corresponding datasets and more details are available online:
 
-### 1. Magnetic distance estimation data
+### 1. Magnetic Distance Estimation Data from Gait Experiments with Magnetoelectric Sensors
 - Dataset: [10.5281/zenodo.13771428](https://doi.org/10.5281/zenodo.13771428)  
 - Application info: /docu/distance_estimation_dataset.md  
 - Corresponding publication: [10.3390/s25020495](https://doi.org/10.3390/s25020495)  
 
-### 2. Magnetic step width estimation data
-- Dataset: TBD
+### 2. Magnetic Step Width Estimation with Magnetoelectric Sensors
+- Dataset: [10.5281/zenodo.15227816](https://doi.org/10.5281/zenodo.15227816)  
 - Application info: /docu/step_width_estimation_dataset.md
 - Corresponding publication: TBD
