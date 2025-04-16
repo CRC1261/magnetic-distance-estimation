@@ -1,6 +1,11 @@
 # magnetic-distance-estimation
 Example scripts to load and visualize magnetic motion tracking data and compare it with optical reference signals.
 
+Use 'example_plot.m' to plot the step width results for a single participant.
+Use 'example_validate.m' to print statistics across participants (only for the magnetic distance estimation data)
+
+First download the dataset from Zenodo and set the 'path' variable to the location of the dataset on your computer!
+
 The corresponding datasets and more details are available online:
 
 ### 1. Magnetic distance estimation data
